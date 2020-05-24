@@ -1,0 +1,27 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["standard", "prettier", "react", "jsx-a11y"],
+  "extends": ["standard", "standard-react", "prettier", "prettier/react", "react-app", "plugin:jsx-a11y/recommended"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  },
+  "rules": {
+    "prettier/prettier": "error",
+    "react/prop-types": "off"
+  }
+}

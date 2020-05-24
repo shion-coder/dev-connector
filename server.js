@@ -1,11 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const passport = require("passport");
 
 const users = require("./routes/api/users");
 const profile = require("./routes/api/profile");
 const posts = require("./routes/api/posts");
 
 const { mongoURI } = require("./config/keys");
+
+require("./services/passport");
 
 /* -------------------------------------------------------------------------- */
 
@@ -21,9 +24,12 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));
 
-// Use Routes
-app.get("/", (req, res) => res.send("Helloooooo"));
+// Midllewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(passport.initialize());
 
+// Use Routes
 app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/posts", posts);
